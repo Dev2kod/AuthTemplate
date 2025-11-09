@@ -3,7 +3,7 @@ import cors from "cors"
 import { Mongoose } from "mongoose"
 import zod from "zod"
 import dotenv from "dotenv"
-import connectdb from "./configs/db"
+import connectdb from "./configs/db.js"
 
 const app = express()
 
