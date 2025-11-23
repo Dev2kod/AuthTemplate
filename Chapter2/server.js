@@ -25,10 +25,12 @@ app.get("/api/data",(req,res)=>{
 })
 app.post("/api/data",(req,res)=>{
     const payload = req.body;
-    data = payload
-    res.send(data).status(200)
+    if(payload){data = payload
+    res.send({
+        "data": data}).status(200)
+    }
 })
 
+
 //starting app
-app.listen(3000,()=>{console.log("running on 3000");
- })
+app.listen(3000,()=>{console.log("running on 3000");})
