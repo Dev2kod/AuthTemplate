@@ -1,22 +1,22 @@
 const express = require("express")
-let data = {
-  "id": 1,
-  "name": "Alice",
-  "email": "alice@example.com",
-  "isActive": true
-}
+let data = ["dname1"]
 
 const app = express()
 app.use(express.json())
 
 //web endpoints
 app.get("/",(req,res)=>{
+    res.send(`
+        <body>
+            <h1>HomePage</h1>
+            <a href="/data">Data endpoint</a>
+        </body>`
+    ).Status(200)
     
-    res.send('<h1>HomePage</h1>').Status(200)
 })
 
-app.get("/dashboard",(req,res)=>{
-    res.send('<h1>Dashboard</h1>')
+app.get("/data",(req,res)=>{
+    res.send(data)
 })
 
 //api endpoints
@@ -25,10 +25,8 @@ app.get("/api/data",(req,res)=>{
 })
 app.post("/api/data",(req,res)=>{
     const payload = req.body;
-    if(payload){data = payload
-    res.send({
-        "data": data}).status(200)
-    }
+    data.push(payload)
+    res.send("data added").status(202)
 })
 
 
